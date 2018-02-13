@@ -62,6 +62,22 @@ class App extends Component {
 
   }
 
+  deslogarUsuario() {
+    const usuario = firebase.auth();
+    usuario.signOut();
+  }
+
+  logarUsuario() {
+    var email = "hugobraganca94@gmail.com";
+    var senha = "123456";
+    const usuario = firebase.auth();
+    usuario.signInWithEmailAndPassword(
+      email,
+      senha
+    );
+
+  }
+
   render() {
 
     return(
@@ -79,6 +95,21 @@ class App extends Component {
           color="#841584"
           accessibilityLabel="Verificar usuário logado"
         />
+
+        <Button 
+          onPress={ () => {this.deslogarUsuario(); } }
+          title="Deslogar Usuário"
+          color="#841584"
+          accessibilityLabel="Deslogar Usuário"
+        />
+
+        <Button 
+          onPress={ () => {this.logarUsuario(); } }
+          title="Logar Usuário"
+          color="#841584"
+          accessibilityLabel="Logar Usuário"
+        />
+
       </View>
     );
   }
